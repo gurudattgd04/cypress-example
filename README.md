@@ -9,6 +9,6 @@ To start
 
 > Open the folder path in terminal
 
-> Execute npm install to install all dependencies
+> Execute **npm install** to install all dependencies
 
-> Execute npm run cypress:open to open the cypress test runner for running tests
+> Execute **npm run cypress:open** to open the cypress test runner for running tests
