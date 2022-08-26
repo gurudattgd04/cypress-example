@@ -1,0 +1,67 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "cypress examples",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "cypress:run": "./node_modules/.bin/cypress run"
+  },
+  "author": "Gurudatt",
+  "license": "ISC",
+  "dependencies": {
+    "@4tw/cypress-drag-drop": "^2.1.0",
+    "@cypress-audit/lighthouse": "1.2.0",
+    "@types/handlebars": "4.1.0",
+    "@types/node": "^17.0.8",
+    "chai": "^4.3.4",
+    "cypress": "10.4.0",
+    "cypress-cucumber-attach-screenshots-to-failed-steps": "1.0.0",
+    "cypress-cucumber-preprocessor": "^4.3.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-multi-reporters": "^1.5.0",
+    "cypress-parallel": "0.9.0",
+    "cypress-real-events": "^1.6.0",
+    "@faker-js/faker": "7.3.0",
+    "handlebars": "4.7.7",
+    "import-cwd": "^3.0.0",
+    "jasmine": "^3.10.0",
+    "jrm": "^1.0.1",
+    "junit-report-merger": "^3.0.2",
+    "junit-xml-to-html": "^1.0.4",
+    "lighthouse": "9.4.0",
+    "lodash": "^4.17.21",
+    "mocha-multi-reporters": "^1.5.1",
+    "mochawesome": "^7.0.1",
+    "mochawesome-junit-reporter": "^1.1.0",
+    "mochawesome-merge": "^4.2.0",
+    "multiple-cucumber-html-reporter": "^1.19.0",
+    "tsify": "^5.0.4",
+    "typescript": "^4.6.3",
+    "jquery-csv": "1.0.21"
+  },
+  "devDependencies": {
+    "@applitools/eyes-cypress": "^3.23.6",
+    "@cypress/code-coverage": "3.9.12",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-network-idle": "1.10.0",
+    "cypress-plugin-tab": "1.0.5",
+    "cypress-recurse": "^1.20.0",
+    "cypress-sql-server": "1.0.0",
+    "@faker-js/faker": "7.3.0",
+    "handlebars-faker": "^0.0.4",
+    "mssql": "8.0.2",
+    "tedious": "14.3.0",
+    "@types/cypress-cucumber-preprocessor": "4.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step-definitions/",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}
