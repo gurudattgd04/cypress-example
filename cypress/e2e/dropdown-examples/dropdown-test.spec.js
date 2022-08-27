@@ -1,9 +1,9 @@
-it.only("Validate the dropdown option selection by it's index", () => {
+it("Validate the dropdown option selection by it's index", () => {
   cy.visit("https://www.bstackdemo.com/");
   cy.get("select").select(1).invoke("val").should("eq", "lowestprice");
 });
 
-it.only("Validate the dropdown option selection by it's value", () => {
+it("Validate the dropdown option selection by it's value", () => {
   cy.visit("https://www.bstackdemo.com/");
   cy.get("select")
     .select("lowestprice")
@@ -11,7 +11,7 @@ it.only("Validate the dropdown option selection by it's value", () => {
     .should("eq", "lowestprice");
 });
 
-it.only("Validate the dropdown option selection by it's text", () => {
+it("Validate the dropdown option selection by it's text", () => {
   cy.visit("https://www.bstackdemo.com/");
   cy.get("select")
     .select("Highest to lowest")
@@ -19,7 +19,7 @@ it.only("Validate the dropdown option selection by it's text", () => {
     .should("eq", "highestprice");
 });
 
-it.only("Validate the dropdown option selection by it's text and assert the selection", () => {
+it("Validate the dropdown option selection by it's text and assert the selection", () => {
   cy.visit("https://www.bstackdemo.com/");
   cy.get("select").select("Highest to lowest");
   cy.get("select option:selected")
