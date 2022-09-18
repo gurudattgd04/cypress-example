@@ -1,0 +1,13 @@
+#ddlCars {
+    min-height:190px; 
+    overflow-y :auto; 
+    overflow-x:hidden; 
+    position:absolute;
+    width:300px;
+    display: contents;
+ }
+
+.dropdown-menu {
+    max-height:100px;/* you can change as you need it */
+    overflow:auto;/* to get scroll */
+ }

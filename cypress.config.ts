@@ -6,5 +6,7 @@ export default defineConfig({
       // implement node event listeners here
     },
     specPattern: "cypress/e2e/**/*.spec.{js,jsx,ts,tsx}",
+    experimentalWebKitSupport: true,
+    //includeShadowDom: true,
   },
 });
