@@ -8,6 +8,11 @@ it("let's validate table value based on columns", () => {
   );
 });
 
+it("Test cy.not", () => {
+  cy.visit("./../../../cypress/table.html");
+  cy.get(".headerRow").not(".selection");
+});
+
 Cypress.Commands.add("getTableData", (companyName, columnName) => {
   return cy
     .contains("th", columnName)

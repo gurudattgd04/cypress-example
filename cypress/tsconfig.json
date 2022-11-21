@@ -3,7 +3,7 @@
       "baseUrl": "./",
       "target": "es5",
       "lib": ["es5", "dom"],
-      "types": ["cypress","node", "cypress-real-events", "cypress-file-upload"]
+      "types": ["cypress","node", "cypress-real-events", "cypress-file-upload","@testing-library/cypress"]
     },
-    "include": ["./**/*.ts"],
+    "include": ["./**/*.ts", "e2e/dropdown-examples/dropdown-test.spec.ts"],
   }

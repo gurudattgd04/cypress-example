@@ -1,2 +1,8 @@
 /node_modules
 /cypress/videos
+/*.txt
+/cucumber-report
+/json-logs
+/results
+/*.ndjson
+/*.log

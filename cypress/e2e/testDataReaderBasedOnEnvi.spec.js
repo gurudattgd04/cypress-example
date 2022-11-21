@@ -1,7 +1,10 @@
 /// <reference types="cypress" />
 
 it("let's test fixture data read based on envi set", () => {
-  cy.fixture(`userData-${Cypress.env("ENVIRONMENT")}`).then((data) => {
-    cy.log(data);
-  });
+  cy.visit("https://bistromd-staging.myshopify.com/");
+  cy.get('input[type="password"]').type("notyet");
+  cy.get('input[type="submit"]').click();
+  cy.wait(8000); // waiting for overlay to appear
+  cy.root();
+  Cypress.onSpecWindow;
 });
