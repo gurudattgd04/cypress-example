@@ -6,7 +6,8 @@
   "scripts": {
     "cypress:open": "./node_modules/.bin/cypress open",
     "cypress:run": "./node_modules/.bin/cypress run --config video=false",
-    "merge-reports": "jrm results/combined-report.xml \"results/*.xml\""
+    "merge-reports": "jrm results/combined-report.xml \"results/*.xml\"",
+    "delete:result": "rm results/* || true"
   },
   "author": "Gurudatt",
   "license": "ISC",
