@@ -7,7 +7,9 @@
     "cypress:open": "./node_modules/.bin/cypress open",
     "cypress:run": "./node_modules/.bin/cypress run --config video=false",
     "merge-reports": "jrm results/combined-report.xml \"results/*.xml\"",
-    "delete:result": "rm results/* || true"
+    "delete:result": "rm results/* || true",
+    "combine-reports": "mochawesome-merge cypress/results/mocha/*.json > cypress/results/mochareports/report.json",
+    "generate-report": "marge cypress/results/mochareports/report.json -f report -o cypress/results/mochareports -- inline"
   },
   "author": "Gurudatt",
   "license": "ISC",
@@ -33,14 +35,14 @@
     "junit-xml-to-html": "^1.0.4",
     "lighthouse": "9.4.0",
     "lodash": "^4.17.21",
-    "mocha-multi-reporters": "^1.5.1",
-    "mochawesome": "^7.0.1",
-    "mochawesome-junit-reporter": "^1.1.0",
-    "mochawesome-merge": "^4.2.0",
     "multiple-cucumber-html-reporter": "^1.19.0",
     "tsify": "^5.0.4",
     "typescript": "^4.6.3",
-    "jquery-csv": "1.0.21"
+    "jquery-csv": "1.0.21",
+    "mocha": "^8.3.2",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.23.6",
@@ -56,7 +58,8 @@
     "tedious": "14.3.0",
     "@types/cypress-cucumber-preprocessor": "4.0.1",
     "playwright-webkit": "1.25.2",
-    "@testing-library/cypress": "8.0.3"
+    "@testing-library/cypress": "8.0.3",
+    "cypress-mochawesome-reporter": "3.2.3"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,

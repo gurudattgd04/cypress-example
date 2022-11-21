@@ -1,26 +1,26 @@
 const { defineConfig } = require("cypress");
 const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
-
-async function setupNodeEvents(on, config) {
-  // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
-  await preprocessor.addCucumberPreprocessorPlugin(on, config);
-
-  on("file:preprocessor", browserify.default(config));
-
-  // Make sure to return the config object as it might have been modified by the plugin.
-  return config;
-}
+const {
+  beforeRunHook,
+  afterRunHook,
+} = require("cypress-mochawesome-reporter/lib");
 
 module.exports = defineConfig({
-  reporter: "junit",
+  reporter: "cypress-mochawesome-reporter",
   reporterOptions: {
-    mochaFile: "results/my-test-output-[hash].xml",
+    charts: true,
+    reportPageTitle: "custom-title",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+    debug: true,
   },
   e2e: {
-    specPattern: ["**/*.feature", "**/*.spec.js"],
-    supportFile: false,
-    setupNodeEvents,
+    specPattern: ["**/*.spec.js"],
+    setupNodeEvents(on, config) {
+      require("cypress-mochawesome-reporter/plugin")(on);
+    },
     experimentalWebKitSupport: true,
   },
 });
