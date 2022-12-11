@@ -22,5 +22,6 @@ module.exports = defineConfig({
       require("cypress-mochawesome-reporter/plugin")(on);
     },
     experimentalWebKitSupport: true,
+    defaultCommandTimeout: 8000,
   },
 });
