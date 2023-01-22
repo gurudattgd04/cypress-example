@@ -17,6 +17,7 @@
 import "./commands";
 import "cypress-mochawesome-reporter/register";
 import "cypress-plugin-api";
+import "cypress-axe";
 chai.use(require("chai-json-schema"));
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

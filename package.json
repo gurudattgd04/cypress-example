@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "./node_modules/.bin/cypress open",
-    "cypress:run": "./node_modules/.bin/cypress run --config video=false",
+    "cypress:run": "CYPRESS_INCLUDE_TAGS=axe ./node_modules/.bin/cypress run --config video=false --env TAGS=",
     "merge-reports": "jrm results/combined-report.xml \"results/*.xml\"",
     "delete:result": "rm results/* || true",
     "combine-reports": "mochawesome-merge cypress/results/mocha/*.json > cypress/results/mochareports/report.json",
@@ -42,7 +42,8 @@
     "mochawesome-report-generator": "^5.2.0",
     "multiple-cucumber-html-reporter": "^1.19.0",
     "tsify": "^5.0.4",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "cypress-tags": "1.1.2"
   },
   "devDependencies": {
     "@applitools/eyes-cypress": "^3.23.6",
@@ -60,7 +61,10 @@
     "handlebars-faker": "^0.0.4",
     "mssql": "8.0.2",
     "playwright-webkit": "1.25.2",
-    "tedious": "14.3.0"
+    "tedious": "14.3.0",
+    "cypress-axe": "1.3.0",
+    "axe-core": "4.6.2",
+    "axe-html-reporter": "2.2.3"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,

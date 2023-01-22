@@ -9,6 +9,8 @@ const {
   beforeRunHook,
   afterRunHook,
 } = require("cypress-mochawesome-reporter/lib");
+import { tagify } from "cypress-tags";
+const fs = require("fs");
 
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
@@ -23,6 +25,19 @@ module.exports = defineConfig({
   e2e: {
     specPattern: ["**/*.spec.js"],
     setupNodeEvents(on, config) {
+      on("file:preprocessor", tagify(config));
+      on("task", {
+        log(message) {
+          console.log(message);
+
+          return null;
+        },
+        table(message) {
+          console.table(message);
+          //  fs.writeFile("/../results/axe-report.txt", ...message);
+          return null;
+        },
+      });
       require("cypress-mochawesome-reporter/plugin")(on);
       cypressBrowserPermissionsPlugin(on, config);
       return config;
