@@ -9,7 +9,7 @@ describe("Table validation", () => {
     );
   });
 
-  it.only("let's validate table value based on columns by query", () => {
+  it("let's validate table value based on columns by query", () => {
     cy.visit("./../../../cypress/table.html");
     cy.contains("th", "Contact")
       .getTableDataByQuery("New Company")

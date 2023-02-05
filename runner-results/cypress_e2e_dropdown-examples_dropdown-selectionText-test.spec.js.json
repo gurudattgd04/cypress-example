@@ -1,0 +1,10 @@
+{
+  "suites": 0,
+  "tests": 1,
+  "passes": 0,
+  "pending": 0,
+  "failures": 1,
+  "start": "2023-02-05T15:21:43.870Z",
+  "duration": 12167,
+  "file": "cypress/e2e/dropdown-examples/dropdown-selectionText-test.spec.js"
+}

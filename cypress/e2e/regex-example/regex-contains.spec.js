@@ -16,3 +16,9 @@ it("Let's test regex contains", () => {
       cy.log(data);
     });
 });
+
+it.only("regex", () => {
+  cy.visit("../../../cypress/index.html");
+  cy.contains(/^Da\w+/);
+  cy.contains(new RegExp("^Date: $", "g"));
+});

@@ -4,24 +4,11 @@ const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify")
 const {
   cypressBrowserPermissionsPlugin,
 } = require("cypress-browser-permissions");
-
-const {
-  beforeRunHook,
-  afterRunHook,
-} = require("cypress-mochawesome-reporter/lib");
 import { tagify } from "cypress-tags";
 const fs = require("fs");
 
 module.exports = defineConfig({
-  reporter: "cypress-mochawesome-reporter",
-  reporterOptions: {
-    charts: true,
-    reportPageTitle: "custom-title",
-    embeddedScreenshots: true,
-    inlineAssets: true,
-    saveAllAttempts: false,
-    debug: true,
-  },
+  projectId: "5xvu1h",
   e2e: {
     specPattern: ["**/*.spec.js"],
     setupNodeEvents(on, config) {
@@ -38,7 +25,7 @@ module.exports = defineConfig({
           return null;
         },
       });
-      require("cypress-mochawesome-reporter/plugin")(on);
+      // require("cypress-mochawesome-reporter/plugin")(on);
       cypressBrowserPermissionsPlugin(on, config);
       return config;
     },
