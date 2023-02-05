@@ -1,7 +1,17 @@
 name: ci
 on: push
 jobs:
-  
+  # example running all tests on a single machine
+  test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Run Cypress tests 🧪
+        # https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v5
+
   # example splitting all tests across GitHub machines
   prepare:
     runs-on: ubuntu-20.04
@@ -20,3 +30,28 @@ jobs:
 
       - name: Print result 🖨
         run: echo '${{ steps.prepare.outputs.matrix }}'
+
+  test-split:
+    needs: prepare
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Print GitHub variables 🖨
+        run: npx @bahmutov/print-env GITHUB
+
+      - name: Print GitHub strategy context 🖨
+        run: echo '${{ toJSON(strategy) }}'
+
+      - name: Run split Cypress tests 🧪
+        # https://github.com/cypress-io/github-action
+        uses: cypress-io/github-action@v5
+        with:
+          spec: cypress/e2e/dropdown-examples/*.js
+        env:
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
