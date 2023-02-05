@@ -6,6 +6,7 @@ const {
 } = require("cypress-browser-permissions");
 import { tagify } from "cypress-tags";
 const fs = require("fs");
+const cypressSplit = require("cypress-split");
 
 module.exports = defineConfig({
   projectId: "5xvu1h",
@@ -28,6 +29,7 @@ module.exports = defineConfig({
 
       // require("cypress-mochawesome-reporter/plugin")(on);
       cypressBrowserPermissionsPlugin(on, config);
+      cypressSplit(on, config);
       return config;
     },
     env: {
