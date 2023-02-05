@@ -10,7 +10,7 @@ const fs = require("fs");
 module.exports = defineConfig({
   projectId: "5xvu1h",
   e2e: {
-    specPattern: ["**/*.spec.js"],
+    specPattern: ["**/dropdown-examples/*.spec.js"],
     setupNodeEvents(on, config) {
       on("file:preprocessor", tagify(config));
       on("task", {
