@@ -1,8 +1,7 @@
 name: ci
 on: push
 jobs:
-
-  # example splitting all tests across GitHub machines
+# example splitting all tests across GitHub machines
   prepare:
     runs-on: ubuntu-20.04
     # explicitly set the output of this job
@@ -40,8 +39,7 @@ jobs:
       - name: Run split Cypress tests 🧪
         # https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v5
-       # with:
-        #  spec: cypress/e2e/dropdown-examples/*.js
+        # using operating system process environment variables
         env:
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
