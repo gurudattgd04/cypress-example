@@ -10,7 +10,7 @@ const fs = require("fs");
 module.exports = defineConfig({
   projectId: "5xvu1h",
   e2e: {
-    specPattern: ["**/dropdown-examples/*.spec.js"],
+    specPattern: ["**/*.spec.js"],
     setupNodeEvents(on, config) {
       on("file:preprocessor", tagify(config));
       on("task", {
@@ -25,6 +25,7 @@ module.exports = defineConfig({
           return null;
         },
       });
+
       // require("cypress-mochawesome-reporter/plugin")(on);
       cypressBrowserPermissionsPlugin(on, config);
       return config;
