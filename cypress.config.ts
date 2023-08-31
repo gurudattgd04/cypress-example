@@ -1,6 +1,6 @@
 const { defineConfig } = require("cypress");
-const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
-const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
+// const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
+// const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
 const {
   cypressBrowserPermissionsPlugin,
 } = require("cypress-browser-permissions");
