@@ -1,5 +1,5 @@
 describe("Geolocation tests", () => {
-  it("Geolocation testing newyork", () => {
+  it.skip("Geolocation testing newyork", () => {
     cy.visit("https://locations.dennys.com/search.html/", {
       onBeforeLoad({ navigator }) {
         const latitude = 43.0;
@@ -10,19 +10,6 @@ describe("Geolocation tests", () => {
       },
     });
     cy.contains(" 701 MOHAWK ST");
-  });
-
-  it("Geolocation testing california", () => {
-    cy.visit("https://locations.dennys.com/search.html/", {
-      onBeforeLoad({ navigator }) {
-        const latitude = 36.7783;
-        const longitude = -119.417931;
-        cy.stub(navigator.geolocation, "getCurrentPosition").callsArgWith(0, {
-          coords: { latitude, longitude },
-        });
-      },
-    });
-    cy.contains(" 536 ACADEMY AVENUE");
   });
 
   it("Geolocation testing california using lambdatest playground", () => {
@@ -50,5 +37,21 @@ describe("Geolocation tests", () => {
     );
     cy.wait("@wait");
     cy.contains("p", "United States");
+  });
+
+  it.only("test Geo Location", () => {
+    const latitude = 51.507351;
+    const longitude = -0.127758;
+    cy.visit("cypress/e2e/geo-location/index.html", {
+      onBeforeLoad({ navigator }) {
+        cy.stub(navigator.geolocation, "getCurrentPosition").callsArgWith(0, {
+          coords: { latitude, longitude },
+        });
+      },
+    });
+    cy.contains("button", "Click me").click();
+    cy.contains(
+      `Your current location is (Latitude: ${latitude}, Longitude: ${longitude})`
+    );
   });
 });

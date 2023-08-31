@@ -1,17 +1,16 @@
-const fs = require("fs");
+const ExcelJS = require("exceljs");
 
 (async function () {
-  const data = fs.readFileSync(
-    "/Users/gurudattsa/development-repo/PersonalRepo/cypress-dropdown-example/cypress-example/ImportTemplate.csv"
-  );
-
-  const fileBytes = [];
-  console.log(data);
-  const array = new Uint8Array(data);
-  array.map((b) => fileBytes.push(b));
-  console.log(fileBytes);
-  fs.writeFileSync(
-    "/Users/gurudattsa/development-repo/PersonalRepo/cypress-dropdown-example/cypress-example/ImportTemplate.txt",
-    fileBytes.toLocaleString()
-  );
+  const workbook = await new ExcelJS.Workbook();
+  return await workbook.xlsx
+    .readFile("cypress/fixtures/userData.xlsx")
+    .then(function () {
+      console.log(
+        "test",
+        workbook.getWorksheet("Sheet1").eachRow((row) => {
+          console.log(row.eachCel);
+        })
+      );
+      return workbook.getWorksheet("Sheet1");
+    });
 })();

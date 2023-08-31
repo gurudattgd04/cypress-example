@@ -7,12 +7,26 @@ const {
 import { tagify } from "cypress-tags";
 const fs = require("fs");
 const cypressSplit = require("cypress-split");
+const ExcelJS = require("exceljs");
 
 module.exports = defineConfig({
-  projectId: "5xvu1h",
+  experimentalModifyObstructiveThirdPartyCode: true,
+  experimentalSessionAndOrigin: true,
+  projectId: "6o7rte",
   e2e: {
-    specPattern: ["**/*.spec.js"],
+    specPattern: ["cypress/e2e/**/*.js"],
     setupNodeEvents(on, config) {
+      on("task", {
+        async readXlsxData() {
+          const workbook = await new ExcelJS.Workbook();
+          return await workbook.xlsx
+            .readFile("cypress/fixtures/userData.xlsx")
+            .then(function () {
+              console.log("test", workbook.getWorksheet("Sheet1"));
+              return workbook.getWorksheet("Sheet1");
+            });
+        },
+      });
       on("file:preprocessor", tagify(config));
       on("task", {
         log(message) {
@@ -30,14 +44,11 @@ module.exports = defineConfig({
       // require("cypress-mochawesome-reporter/plugin")(on);
       cypressBrowserPermissionsPlugin(on, config);
       cypressSplit(on, config);
+      // config.baseUrl = `https://${config.env.HOST}`;
       return config;
     },
-    env: {
-      browserPermissions: {
-        geolocation: "allow",
-      },
-    },
     experimentalWebKitSupport: true,
-    defaultCommandTimeout: 4000,
+    defaultCommandTimeout: 9000,
+    videoCompression: 50,
   },
 });

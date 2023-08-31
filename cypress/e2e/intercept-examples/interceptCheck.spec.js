@@ -10,7 +10,7 @@ it("Intercept test", () => {
       }
     }
   ).as("waitForProduct");
-  cy.visit("https://www.bstackdemo.com/");
+  cy.visit("/");
   cy.wait("@waitForProduct", { timeout: 3000 });
   cy.get("@waitForProduct.all").then((data) => {
     cy.log(data);
