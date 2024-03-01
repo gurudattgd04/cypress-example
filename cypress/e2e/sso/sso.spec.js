@@ -6,11 +6,11 @@ describe("SSO scenarios", () => {
       cy.wrap(body)
         .as("iframe")
         .find("[type='email']")
-        .type("aryandutt04@gmail.com", { force: true });
+        .type("blah@gmail.com", { force: true });
       cy.get("@iframe").find("[value='Next']").click();
       cy.origin("https://www.microsoft.com/", () => {
         cy.visit("/");
-        cy.get("[name='passwd']").type("gurudatt@26", { force: true });
+        cy.get("[name='passwd']").type("blah", { force: true });
         cy.get("#idSIButton9").click();
       });
     });
