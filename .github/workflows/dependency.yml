@@ -1,4 +1,5 @@
 name: Test Cypress
+
 on:
   workflow_run:
     workflows: ["Cypress Tests"]
