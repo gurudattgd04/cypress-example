@@ -32,6 +32,7 @@ jobs:
           # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
           GITHUB_TOKEN: ${{ secrets.TOKEN_GIT }}
   
-  tests:
+  RunSecondJob:
+    name: "Run second job"
     uses: ./.github/workflows/dependency.yml
     
