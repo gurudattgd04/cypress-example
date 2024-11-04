@@ -1,11 +1,6 @@
 name: Test Cypress
 
-on:
-  workflow_run:
-    workflows: ["Cypress Tests"]
-    branches: [main]
-    types:
-      - completed
+on: [workflow_call]
       
 jobs:
   cypress-run:
